@@ -1,0 +1,201 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 50px;
+            width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: 20px 0; /* Adds spacing above and below */
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #ff6f91;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ff6f91;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #ff9a9e;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            background: #ff6f91;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #ff9a9e;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ff6f91;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #ff9a9e;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" class="input-field" placeholder="Enter your first name" required>
+                <div class="error" id="first-name-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" class="input-field" placeholder="Enter your last name" required>
+                <div class="error" id="last-name-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="input-field" placeholder="Enter your email" required>
+                <div class="error" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="input-field" placeholder="Create a password" required>
+                <div class="error" id="password-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" class="input-field" placeholder="Confirm your password" required>
+                <div class="error" id="confirm-password-error"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+        <a href="C:\Users\angai\OneDrive\Desktop\page01.html" class="back-btn">Back to Home</a>
+    </div>
+
+    <script>
+        const form = document.getElementById("signup-form");
+
+        // Form submission logic
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let isValid = true;
+
+            // Clear previous error messages
+            document.querySelectorAll(".error").forEach(error => error.textContent = "");
+
+            // Get input values
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            // Validate fields
+            if (!firstName) {
+                document.getElementById("first-name-error").textContent = "First name is required.";
+                isValid = false;
+            }
+
+            if (!lastName) {
+                document.getElementById("last-name-error").textContent = "Last name is required.";
+                isValid = false;
+            }
+
+            if (!email) {
+                document.getElementById("email-error").textContent = "Email is required.";
+                isValid = false;
+            }
+
+            if (!password) {
+                document.getElementById("password-error").textContent = "Password is required.";
+                isValid = false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("confirm-password-error").textContent = "Passwords do not match.";
+                isValid = false;
+            }
+
+            // If valid, redirect to next page
+            if (isValid) {
+                window.location.href = "C:\\Users\\angai\\OneDrive\\Desktop\\mainpage01.html";
+            }
+        });
+    </script>
+</body>
+</html>
